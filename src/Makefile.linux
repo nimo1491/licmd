@@ -1,0 +1,22 @@
+CC=gcc
+TOPDIR=../
+OBJS=licmd.o likcs.o
+INCS=cc_str.h likcs.h licmd.h
+EXECUTABLE=licmd
+SELFCALL=make -f Makefile.linux
+
+.PHONY: all clean-obj install
+
+All: $(OBJS)
+	$(CC) -o $(EXECUTABLE) $(OBJS)
+	$(SELFCALL) clean-obj
+	$(SELFCALL) install
+
+%.o: %.c $(INCS)
+	$(CC) -c -o $@ $<
+
+clean-obj:
+	rm -f $(OBJS)
+
+install:
+	mv $(EXECUTABLE) $(TOPDIR)
