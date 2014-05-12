@@ -1,11 +1,15 @@
 #Lanner IPMI Command Tool
 This tool is used to send IPMI command to BMC via KCS directly under Linux or DOS.
+We also customized some commands for testbed using on this version.
 
 ##Version
-v0.1.0
+v0.1.1
 
 ##Usage:
-`licmd SLAVE_ADDR NETFN CMD [DATA]`
+* `licmd <command>`, where command is one of the following:
+    * `devid`:  check the existence of BMC.
+    * `fwinfo`: get build time and revision of the firmware.
+* Or use raw command `licmd SLAVE_ADDR NETFN CMD [DATA]`
 
 ##How to Install:
 * Invoke `make` to build the executable file.

@@ -1,6 +1,6 @@
 CC=gcc
 TOPDIR=../
-OBJS=licmd.o likcs.o
+OBJS=licmd.o likcs.o licmcmd.o
 INCS=cc_str.h likcs.h licmd.h
 EXECUTABLE=licmd
 SELFCALL=make -f Makefile.linux
