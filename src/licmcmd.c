@@ -69,12 +69,40 @@ int li_fwinfo(UINT8 *completionCode) {
 
 static void show_fwinfo(UINT8 *resData)
 {
+    int  fwMbInfo;
     char fwRev[16];
-    char fwBuildTime[32];
-    const char *Month[] = {
-        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    };
+
+    //get ODM customer
+    switch (resData[2]) {
+        case 10:
+            printf("ODM Customer: %s\n", "Lanner Standard");
+            break;
+        case 11:
+            printf("ODM Customer: %s\n", "Check Point");
+            break;
+        case 12:
+            printf("ODM Customer: %s\n", "Celestix");
+            break;
+        case 13:
+            printf("ODM Customer: %s\n", "A10 Network");
+            break;
+        case 14:
+            printf("ODM Customer: %s\n", "Nomadix");
+            break;
+        case 15:
+            printf("ODM Customer: %s\n", "LS-China");
+            break;
+        default:
+            printf("ODM Customer: %s\n", "Not available");
+            break;
+    }
+
+    //get motherboard info
+    fwMbInfo = resData[3] * 100 + resData[4];
+    if (fwMbInfo == 2300)
+        printf("Suitable Motherboard: %s\n", "All in one firmware");
+    else
+        printf("Suitable Motherboard: %s-%d\n", "MB", fwMbInfo);
 
     //get firmware revision
     if (resData[2] == 11 && resData[0] >= 2 && resData[5] >= 2) { // cp all-in-one firmware has special version format
@@ -84,8 +112,4 @@ static void show_fwinfo(UINT8 *resData)
         sprintf(fwRev, "%d.%d", resData[0], resData[1]);
     }
     printf("Firmware Revision: %s\n", fwRev);
-
-    //get firmware build time
-    sprintf(fwBuildTime, "%s %d %d%d %d:%d:%d", Month[resData[8]], resData[9], resData[6], resData[7], resData[10], resData[11], resData[12]);
-    printf("Firmware Build Time: %s\n", fwBuildTime);
 }

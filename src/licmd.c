@@ -16,7 +16,7 @@ static struct {
     char desc[128];
 } cmcmds[NCMCMDS] = {
     {0, "devid",   li_devid,   "Send \"Get Device ID\" command to check the existence of BMC."},
-    {1, "fwinfo",  li_fwinfo,  "Send OEM \"Firmware Info\" command to get the version and build time of current firmware."}
+    {1, "fwinfo",  li_fwinfo,  "Send OEM \"Firmware Info\" command to get the version, ODM customer, and suitable motherboard of current firmware."}
     //{2, "hwid",    li_hwid,    "Send OEM \"Get Hardware ID\" command to get the system's hardware ID."},
     //{3, "netinfo", li_netinfo, "Send \"Get IP/Mask/Gateway\" commands to get the network configurations."}
 };
