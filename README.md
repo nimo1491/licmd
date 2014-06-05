@@ -3,7 +3,7 @@ This tool is used to send IPMI command to BMC via KCS directly under Linux or DO
 We also customized some commands for testbed using on this version.
 
 ##Version
-v0.1.2
+v0.1.3
 
 ##Usage:
 * `licmd <command>`, where command is one of the following:

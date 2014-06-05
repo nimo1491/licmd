@@ -14,3 +14,10 @@ Modify the functionality of `fwinfo` command.
 Commands: 
 * `devid`:  check the existence of BMC.
 * `fwinfo`: get revision, ODM customer, and suitable motherboard of the current firmware. 
+
+###v0.1.3
+Return error message if BMC is AST1000 or AST2150 because of the incompatible OEM commands.
+
+Commands: 
+* `devid`:  check the existence of BMC.
+* `fwinfo`: get revision, ODM customer, and suitable motherboard of the current firmware. 
